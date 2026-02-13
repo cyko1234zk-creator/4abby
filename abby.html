@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Abby 💖</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #ffd6e8, #ffc2f2, #f8b6ff);
+    overflow: hidden;
+}
+
+/* Floating hearts */
+.heart {
+    position: absolute;
+    font-size: 18px;
+    animation: floatUp 8s linear infinite;
+    opacity: 0.7;
+}
+
+@keyframes floatUp {
+    from { transform: translateY(100vh); }
+    to { transform: translateY(-10vh); }
+}
+
+/* Glass card */
+.card {
+    backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.25);
+    padding: 50px 40px;
+    border-radius: 30px;
+    text-align: center;
+    box-shadow: 0 8px 40px rgba(255, 105, 180, 0.3);
+    max-width: 400px;
+}
+
+/* Aesthetic heading */
+h1 {
+    font-size: 1.9rem;
+    color: white;
+    line-height: 1.6;
+    text-shadow: 0 0 15px rgba(255, 105, 180, 0.8);
+    margin-bottom: 30px;
+}
+
+/* Buttons */
+button {
+    padding: 14px 28px;
+    font-size: 17px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    margin: 10px;
+    transition: 0.3s ease;
+}
+
+#yesBtn {
+    background: linear-gradient(45deg, #ff4da6, #ff80bf);
+    color: white;
+    box-shadow: 0 5px 15px rgba(255, 77, 166, 0.4);
+}
+
+#yesBtn:hover {
+    transform: scale(1.1);
+}
+
+#noBtn {
+    background: white;
+    color: #ff4da6;
+}
+
+#message {
+    margin-top: 20px;
+    font-size: 20px;
+    color: white;
+    display: none;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
+}
+
+/* Sad cat animation */
+.sadCat {
+    position: absolute;
+    font-size: 40px;
+    animation: pop 1s ease forwards;
+}
+
+@keyframes pop {
+    0% { transform: scale(0); opacity: 0; }
+    50% { transform: scale(1.6); opacity: 1; }
+    100% { transform: scale(1); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1>
+        Abby 🐱💖<br>
+        Will you be my Valentine this February 14 in Roblox? 🥺✨
+    </h1>
+
+    <button id="yesBtn">Yes 💕</button>
+    <button id="noBtn">No 😢</button>
+
+    <div id="message">
+        YAYYY 🥹💘 See you on February 14 in Roblox, Abby!
+    </div>
+</div>
+
+<script>
+let noSize = 17;
+let yesSize = 17;
+
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+const message = document.getElementById("message");
+
+noBtn.addEventListener("click", function() {
+
+    noSize -= 2;
+    yesSize += 4;
+
+    noBtn.style.fontSize = noSize + "px";
+    yesBtn.style.fontSize = yesSize + "px";
+
+    if (noSize <= 0) {
+        noBtn.style.display = "none";
+    }
+
+    // Sad cat burst
+    for (let i = 0; i < 6; i++) {
+        let cat = document.createElement("div");
+        cat.className = "sadCat";
+        cat.innerHTML = "😿";
+        cat.style.left = Math.random() * 90 + "vw";
+        cat.style.top = Math.random() * 90 + "vh";
+        document.body.appendChild(cat);
+
+        setTimeout(() => {
+            cat.remove();
+        }, 1000);
+    }
+});
+
+yesBtn.addEventListener("click", function() {
+    message.style.display = "block";
+});
+
+// Floating hearts
+for (let i = 0; i < 18; i++) {
+    let heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (5 + Math.random() * 6) + "s";
+    document.body.appendChild(heart);
+}
+</script>
+
+</body>
+</html>
